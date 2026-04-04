@@ -1,3 +1,5 @@
+import Navbar from './components/Navbar'
+import AppRoutes from './routes/AppRoutes'
 import './styles/App.css'
 
 function App() {
@@ -5,7 +7,8 @@ function App() {
 
   return (
    <>
-      <h1>Welcome to Smart Task Manager</h1>
+      <Navbar />
+      <AppRoutes />
    </>
   )
 }
