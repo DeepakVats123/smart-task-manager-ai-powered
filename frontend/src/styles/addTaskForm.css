@@ -1,0 +1,37 @@
+.container {
+    text-align: center;
+    margin:50px auto;
+    width: 400px;
+    border: 1px solid #242424;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: #242424 0px 0px 5px;
+}
+
+label{
+    display: block;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: -15px;
+}
+
+input, textarea {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #242424;
+    color: white;
+    padding: 10px 30px;
+    border: 1px solid #242424;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+button:hover {
+    background-color: #333;
+}

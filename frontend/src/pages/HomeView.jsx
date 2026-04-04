@@ -4,6 +4,25 @@ import '../styles/homeView.css'
 const HomeView = () => {
   const [tasks, setTasks] = React.useState([]);
 
+  const deleteTask = async (id) => {
+    try {
+      const res = await fetch(`http://localhost:3200/api/v1/tasks/${id}`, {
+        method: 'DELETE'
+      });
+
+      if (!res.ok){
+        throw new Error('Failed to delete task');
+      }else{
+        setTasks(tasks.filter(task => task._id !== id));
+
+
+      }
+      
+    } catch (error) {
+      console.error('Error deleting task:', error);
+    }
+  };
+
   useEffect(() => {
     const fetchTasks = async () => {
       try {
@@ -35,7 +54,7 @@ const HomeView = () => {
             <li className='list-item'>{index + 1}</li>
             <li className='list-item'>{task.title}</li>
             <li className='list-item'>{task.description}</li>
-            <li className='list-item'><button  className='delete-btn'>Delete</button></li>
+            <li className='list-item'><button onClick={() => deleteTask(task._id)} className='delete-btn'>Delete</button></li>
           </Fragment>
         ))}
       </ul>

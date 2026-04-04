@@ -1,4 +1,5 @@
 import { connectToDatabase, collectionName } from "../db/dbconfig.js";
+import { ObjectId } from 'mongodb';
 
 export const createTask = async (req, res) => {
     
@@ -27,5 +28,26 @@ export const getTasks = async (req, res) => {
         messege: 'Tasks fetched successfully',
         status: 'success',
         tasks: result
+    });
+}
+
+export const deleteTask = async (req, res) => {
+
+    if (!ObjectId.isValid(req.params.id)) {
+        return res.status(400).json({
+            messege: 'Invalid task ID',
+            status: 'error'
+        });
+    }
+
+    const db = await connectToDatabase();
+    const collection = db.collection(collectionName);
+    const result = await collection.deleteOne({ _id: new ObjectId(req.params.id) });
+
+    
+    res.status(200).json({
+        messege: 'Task deleted successfully',
+        status: 'success',
+        task: result
     });
 }
