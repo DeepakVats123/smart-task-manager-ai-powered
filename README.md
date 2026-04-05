@@ -57,7 +57,7 @@ npm install
 Create a `.env` file in the `backend/` folder:
 
 ```env
-PORT=5000
+PORT=3200
 MONGO_URI=your_mongodb_connection_string
 AI_API_KEY=your_ai_api_key
 ```
