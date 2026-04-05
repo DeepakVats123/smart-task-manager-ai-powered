@@ -1,28 +1,40 @@
+.title {
+  text-align: center;
+}
+
 .task-list {
   display:grid;
-  grid-template-columns: 50px 1fr 2fr 100px;
-  gap: 10px;
-  margin: 20px;
+  grid-template-columns: 50px 1fr 2fr 80px 80px;
+  gap: 8px;
+  margin: 10px;
   list-style: none;
-  max-width: 90%; 
+  max-width: 93%; 
 }
 
 .list-header {
   font-weight: bold;
-  padding: 10px;
+  padding: 12px;
   background: #f0f0f0;
   border: 1px solid #ccc;
+  text-align: left;
 }
 .list-item{
-  padding: 10px;
+  padding: 5px;
   background: #f0f0f0;
   border: 1px solid #ccc;
+  text-align: center;
 }
 
 .delete-btn {
-  background: red;
-  color: white;
-  border: none;
   padding: 5px 5px;
-  cursor: pointer;
+  font-size: 15px;
+  margin-top: 3px;
 }
+
+.status-inp{
+  width: 25px;
+  height: 25px;
+  margin-top: 5px;
+  margin-bottom: -10px;
+}
+

@@ -77,21 +77,20 @@ const HomeView = () => {
 
   return (
     <div>
-      <h1>Tasks List</h1>
+      <h1 className='title'>Tasks List</h1>
       <ul className="task-list">
         <li className='list-header'>S.No</li>
         <li className='list-header'>Title</li>
         <li className='list-header'>Description</li>
         <li className='list-header'>Action</li>
+        <li className='list-header'>Status</li>
         {tasks.map((task, index) => (
           <Fragment key={task._id}>
             <li className='list-item'>{index + 1}</li>
             <li className='list-item'>{task.title}</li>
             <li className='list-item'>{task.description}</li>
-            <li className='list-item'>
-                <button onClick={() => deleteTask(task._id)} className='delete-btn'>Delete</button>
-                <input type="checkbox" checked={task.status} onChange={() => updateTaskStatus(task._id, !task.status)} />
-            </li>
+            <li className='list-item'><button onClick={() => deleteTask(task._id)} className='delete-btn'>Delete</button></li>
+            <li className='list-item'><input className='status-inp' type="checkbox" checked={task.status} onChange={() => updateTaskStatus(task._id, !task.status)} /></li>
           </Fragment>
         ))}
       </ul>

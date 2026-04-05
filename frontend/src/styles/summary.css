@@ -1,0 +1,48 @@
+.title {
+    margin-top: 30px;
+}
+
+.summary-container {
+    text-align: center;
+}
+
+.loading-img{
+    margin-top: 30px;
+    width: 80px;
+}
+
+.animated-summary {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #333;
+
+    display: inline-block;
+    white-space: prewrap;
+    overflow: visible;
+    border-right: 2px solid #333;
+
+    width: 0;
+    animation: typing 4s steps(40, end) forwards,
+               blink 1s infinite;
+
+  
+    line-height: 1.6;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink {
+    0%, 50%, 100% {
+        border-color: #333;
+    }
+    25%, 75% {
+        border-color: transparent;
+    }
+}
