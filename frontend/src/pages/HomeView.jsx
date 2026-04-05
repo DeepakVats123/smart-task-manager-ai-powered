@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect } from 'react'
 import '../styles/homeView.css'
+import Summary from '../components/Summary';
 
 const HomeView = () => {
   const [tasks, setTasks] = React.useState([]);
@@ -94,6 +95,8 @@ const HomeView = () => {
           </Fragment>
         ))}
       </ul>
+
+      <Summary tasks={tasks} />
       
     </div>
   )

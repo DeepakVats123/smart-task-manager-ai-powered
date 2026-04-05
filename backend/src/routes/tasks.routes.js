@@ -1,5 +1,5 @@
 import {Router} from "express";
-import { createTask, getTasks, deleteTask, updateTaskStatus } from "../controllers/tasks.controller.js";
+import { createTask, getTasks, deleteTask, updateTaskStatus, generateTaskSummary } from "../controllers/tasks.controller.js";
 
 
 const taskRouter = Router();
@@ -10,6 +10,9 @@ taskRouter.delete("/tasks/:id", deleteTask)
 
 //update task status
 taskRouter.put("/tasks/:id", updateTaskStatus);
+
+//Generate tsak Summary with gemini ai api
+taskRouter.post("/tasks/summary", generateTaskSummary);
 
 
 export default taskRouter;
