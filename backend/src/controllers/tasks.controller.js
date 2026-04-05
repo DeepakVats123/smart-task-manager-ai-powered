@@ -47,7 +47,32 @@ export const deleteTask = async (req, res) => {
     
     res.status(200).json({
         messege: 'Task deleted successfully',
+        
         status: 'success',
         task: result
     });
+}
+
+//update task status
+export const updateTaskStatus = async (req, res) => {
+
+    if (!ObjectId.isValid(req.params.id)) {
+        return res.status(400).json({
+            messege: 'Invalid task ID',
+            status: 'error'
+        });
+    }
+    const db = await connectToDatabase();
+    const collection = db.collection(collectionName);
+    const result = await collection.updateOne(
+        { _id: new ObjectId(req.params.id) },
+        { $set: { status: req.body.status } }
+    );
+
+    res.status(200).json({
+        messege: 'Task status updated successfully',
+        status: 'success',
+        task: result
+    });
+
 }

@@ -23,6 +23,39 @@ const HomeView = () => {
     }
   };
 
+  const updateTaskStatus = async (id, status) => {
+    if(!id){
+      console.error('Task ID is required to update status');
+      return;
+    }
+    if(typeof status !== 'boolean'){
+      console.error('Status must be a boolean value');
+      return;
+    }
+
+    try {
+      const res = await fetch(`http://localhost:3200/api/v1/tasks/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ status })
+      });
+
+      if (!res.ok) {
+        throw new Error('Failed to update task status');
+      }
+
+      
+      setTasks(tasks.map(task => task._id === id ? { ...task, status: !task.status } : task));
+      
+
+    } catch (error) {
+      console.error('Error updating task status:', error);
+    }
+  };
+
+
   useEffect(() => {
     const fetchTasks = async () => {
       try {
@@ -54,7 +87,10 @@ const HomeView = () => {
             <li className='list-item'>{index + 1}</li>
             <li className='list-item'>{task.title}</li>
             <li className='list-item'>{task.description}</li>
-            <li className='list-item'><button onClick={() => deleteTask(task._id)} className='delete-btn'>Delete</button></li>
+            <li className='list-item'>
+                <button onClick={() => deleteTask(task._id)} className='delete-btn'>Delete</button>
+                <input type="checkbox" checked={task.status} onChange={() => updateTaskStatus(task._id, !task.status)} />
+            </li>
           </Fragment>
         ))}
       </ul>
